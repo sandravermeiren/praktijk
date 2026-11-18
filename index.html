@@ -568,6 +568,10 @@ html.wlock{overflow:hidden}
 #werkvormen .wclose{position:sticky;top:.3rem;float:right;z-index:2;width:2.4rem;height:2.4rem;border-radius:50%;border:1px solid #d9c3a4;background:#fbf5e9;color:var(--brown);font-size:1.5rem;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(70,45,20,.18)}
 #werkvormen .wclose:hover,#werkvormen .wclose:focus-visible{background:#f1e4d1}
 
+.subnav{width:auto;margin:0 clamp(1rem,4vw,3rem);padding:.6rem 0 .8rem;border-top:1px solid #d9c3a4}
+.subnav ul{display:flex;justify-content:center;flex-wrap:wrap;gap:.3rem clamp(1.4rem,4vw,2.6rem);list-style:none;margin:0;padding:0}
+.subnav a{font-size:clamp(.95rem,1.15vw,1.08rem);letter-spacing:.08em;color:var(--ink-soft)}
+.subnav a[aria-current="page"]{color:var(--ink)}
 #groei .offer p,#groei .offer .mod{text-align:left;align-self:stretch}
 #groei .offer .wpts{gap:.45rem}
 #groei .offer .mods{width:100%;display:grid;gap:.9rem;text-align:left}
@@ -576,7 +580,10 @@ html.wlock{overflow:hidden}
 #groei .offer .mods p{margin:0;font-size:.98rem;line-height:1.5}
 #groei .trio-offer.duo{max-width:1040px;gap:1.6rem}
 #groei .offer .btn.ghost{cursor:default}
-.wl{width:100%;margin-top:auto;padding:1.1rem 1.1rem 1.2rem;border:1px solid #e0cdb0;border-radius:16px;background:rgba(255,255,255,.55)}
+.wl{width:100%;margin-top:auto;padding:0}
+#groei .offer .btn,#groei .wl .btn{box-sizing:border-box;width:100%;min-height:3.1rem;display:flex;align-items:center;justify-content:center;text-align:center;padding:.7rem 1.2rem;font-size:1rem;line-height:1.2;margin-left:0;margin-right:0}
+#groei .offer .wl-soon{margin-top:auto}
+#groei .wl button.btn{cursor:pointer}
 .wl label{display:block;font-size:.86rem;font-weight:700;margin:0 0 .25rem;text-align:left}
 .wl input[type=text],.wl input[type=email]{width:100%;box-sizing:border-box;padding:.7rem .9rem;border:1px solid #cdb592;border-radius:999px;background:#faf3e8;font:inherit;margin:0 0 .8rem}
 .wl .btn{width:100%}
@@ -641,13 +648,7 @@ html.cklock{overflow:hidden}
     <nav id="menu" aria-label="Hoofdmenu">
       <ul>
         <li><a href="#welkom">Welkom</a></li>
-        <li class="has-sub"><a href="#aanbod">Aanbod</a>
-          <ul class="sub" aria-label="Aanbod">
-            <li><a href="#praktijk">Praktijk</a></li>
-            <li><a href="#groei">Wolfsziel</a></li>
-            <li><a href="#verbinding">Weversveld</a></li>
-          </ul>
-        </li>
+        <li><a href="#aanbod">Aanbod</a></li>
         <li><a href="#gratis">Gratis</a></li>
         <li><a href="#afspraak">Afspraak</a></li>
         <li><a href="#over-mij">Over mij</a></li>
@@ -655,6 +656,14 @@ html.cklock{overflow:hidden}
       </ul>
     </nav>
   </div>
+
+  <nav class="subnav" aria-label="Aanbod">
+    <ul>
+      <li><a href="#praktijk">Praktijk</a></li>
+      <li><a href="#groei">Wolfsziel</a></li>
+      <li><a href="#verbinding">Weversveld</a></li>
+    </ul>
+  </nav>
 
   <main>
   <!-- WELKOM -->
@@ -1379,17 +1388,14 @@ html.cklock{overflow:hidden}
         <p class="dropline">De wolf is het heilige totemdier voor wie diep en authentiek wil leven en <em class="hl">op die manier wegbereider wil zijn voor een nieuwe samenleving.</em></p>
       </div>
       <blockquote class="pull" style="font-style:normal">De krachtige wolf belichaamt een vlijmscherpe intuïtie, onvoorwaardelijke loyaliteit en de ultieme balans tussen vrijheid en verbondenheid.</blockquote>
-      <div class="split" style="margin-top:2.4rem">
-        <div class="photo tall sq"><img loading="lazy" decoding="async" src="img/wolf2.jpg" alt="Een wolf die vanuit het gras in de camera kijkt, naast een grote rots" style="object-position:20% 50%"></div>
-        <div>
-          <p class="big" style="margin-bottom:.8rem">Met Wolfsziel doorloop je een weldoordacht traject waarin je de oerkrachten van de wolf in jezelf gaat activeren:</p>
-          <ul class="wpts">
-            <li><span class="lbl">Vertrouwen op je instinct:</span> De wolf nodigt je uit om te zakken van je hoofd naar je buik. Je leert meedogenloos te vertrouwen op je eigen innerlijke stem.</li>
-            <li><span class="lbl">Samenleven met je clan/tribe:</span> De wolf herinnert je aan de kracht van loyale relaties en werkelijke samenwerking, zónder dat je daarin je eigen, sterke individualiteit verliest.</li>
-            <li><span class="lbl">Krachtig, innerlijk leiderschap:</span> De wolf helpt je om je eigen grenzen feilloos te bewaken. Je neemt de leiding over je eigen leven en blijft onwankelbaar trouw aan jouw unieke pad.</li>
-            <li><span class="lbl">Vrijheid en je eigen ritme:</span> De wolf is intelligent, vrijgevochten en wild. Hij daagt je uit om de maatschappelijke verwachtingen los te laten en voluit te leven vanuit jouw eigen, natuurlijke ritme.</li>
-          </ul>
-        </div>
+      <div style="max-width:760px;margin:2.4rem auto 0">
+        <p class="big" style="margin-bottom:.8rem">Met Wolfsziel doorloop je een weldoordacht traject waarin je de oerkrachten van de wolf in jezelf gaat activeren:</p>
+        <ul class="wpts">
+          <li><span class="lbl">Vertrouwen op je instinct:</span> De wolf nodigt je uit om te zakken van je hoofd naar je buik. Je leert meedogenloos te vertrouwen op je eigen innerlijke stem.</li>
+          <li><span class="lbl">Samenleven met je clan/tribe:</span> De wolf herinnert je aan de kracht van loyale relaties en werkelijke samenwerking, zónder dat je daarin je eigen, sterke individualiteit verliest.</li>
+          <li><span class="lbl">Krachtig, innerlijk leiderschap:</span> De wolf helpt je om je eigen grenzen feilloos te bewaken. Je neemt de leiding over je eigen leven en blijft onwankelbaar trouw aan jouw unieke pad.</li>
+          <li><span class="lbl">Vrijheid en je eigen ritme:</span> De wolf is intelligent, vrijgevochten en wild. Hij daagt je uit om de maatschappelijke verwachtingen los te laten en voluit te leven vanuit jouw eigen, natuurlijke ritme.</li>
+        </ul>
       </div>
       <div class="prose" style="margin-top:2rem">
         <p class="seal" style="font-style:normal">Wees gewaarschuwd: jouw innerlijke vuur wordt zó sterk aangewakkerd dat je niet anders kunt dan jouw unieke plek in het grotere geheel in te nemen en te gaan leven vanuit je diepste, ontembare natuur.</p>
@@ -1399,7 +1405,7 @@ html.cklock{overflow:hidden}
       <div class="center" style="margin-bottom:2rem"><h2 style="font-size:clamp(1.9rem,4.4vw,2.8rem)">Zullen we elkaar ont-moeten?</h2><div class="orn"><i></i></div></div>
       <div class="trio-offer duo">
         <div class="offer">
-          <img loading="lazy" decoding="async" class="pic" src="img/wolven.jpg" alt="Twee wolven die samen in de camera kijken" style="object-position:50% 40%">
+          <img loading="lazy" decoding="async" class="pic" src="img/wolf2.jpg" alt="Een wolf die vanuit het gras in de camera kijkt, naast een grote rots" style="object-position:20% 50%">
           <a class="btn" href="#contact">Blended leertraject</a>
           <p class="oseal">Je ontwikkelt je wolfsziel in een uitgestippeld online traject. In de actieve community word je gehoord en aangemoedigd. Je kunt er voor al je oefeningen en met al je vragen en bezorgdheden terecht.</p>
           <p>De toegang tot het traject en de community behoud je gedurende twee jaar. In die periode neem je gratis deel aan alle wolfsziel-communitydagen. Tijdens die communitydagen diep je thema’s uit en oefen je vaardigheden in.</p>
@@ -1414,23 +1420,22 @@ html.cklock{overflow:hidden}
               <ul class="wpts"><li>Elke wolf heeft een plek en taak in het geheel. <span class="hint">levenstaak</span></li></ul></div>
           </div>
           <p class="onote">Jouw bijdrage voor deelname aan dit transformatieve traject is 1111€.</p>
-          <span class="btn ghost" aria-disabled="true">Eerstvolgende datum: nog te bepalen</span>
-          <a class="btn" href="#contact">Meld je aan</a>
+          <span class="btn ghost wl-soon" aria-disabled="true">Dit traject is in opbouw</span>
         </div>
         <div class="offer" id="wachtlijst">
-          <img loading="lazy" decoding="async" class="pic" src="img/wolf.jpg" alt="Een wolf in het wild" style="object-position:50% 40%">
+          <img loading="lazy" decoding="async" class="pic" src="img/wolven.jpg" alt="Twee wolven die samen in de camera kijken" style="object-position:50% 40%">
           <a class="btn" href="#wachtlijst">Live groepstraject in 7 dagen</a>
-          <p class="oseal">In zeven dagen ga je samen met een groep op weg naar je diepste verlangen en je zieletaak, live en met alles erop en eraan.</p>
+          <p class="oseal">Samen met anderen ontwikkel je je wolfsziel in een begeleid groepstraject van 7 dagen.</p>
           <p>Dit zijn de thema’s die aan bod komen:</p>
           <ul class="wpts">
-            <li>Ontdek je diepste verlangen en je zieletaak.</li>
-            <li>Vind de kracht, inspiratie en handvaten dat verlangen en die zieletaak ten volle te omarmen.</li>
-            <li>Transformeer wat je afhoudt van dat verlangen en die zieletaak.</li>
-            <li>Beweeg op dagdagelijkse basis naar je diepste verlangen en zieletaak.</li>
-            <li>Nodig anderen uit in je diepste verlangen en zieletaak.</li>
+            <li>Ontdek je allerdiepste verlangen en je zieletaak.</li>
+            <li>Leer om levendig aanwezig te zijn en in elk moment de interactie met de levensstroom aan te gaan.</li>
+            <li>Train je lichaam als kompas, ontwikkel je intuïtie.</li>
+            <li>Wees loyaal én in de eerste plaats trouw aan jezelf.</li>
+            <li>Beweeg op dagdagelijkse basis -zonder uitzonderingsdagen en toch moeiteloos- richting je verlangen en zieletaak.</li>
           </ul>
-          <p>Elke dag zit boordevol richting, wijsheid, beweging, transformatie, aha-belevingen. Beloofd!</p>
-          <p>Wil je op de hoogte blijven van de data van de eerste try-out? Zet je op de wachtlijst.</p>
+          <p>Elke dag zit boordevol ontdekking, innerlijke beweging, transformatie, aha-momenten. Elke dag voel je de wolfsziel en jij meer en meer versmelten tot 1 spirit. Beloofd!</p>
+          <p>Wil je op de hoogte blijven van de data van een eerste try-out? Zet je op de wachtlijst.</p>
           <p class="onote">De prijs voor de try-out is eenmalig 555€.</p>
           <form class="wl" id="wlForm" novalidate>
             <label for="wlNaam">Voornaam</label>
