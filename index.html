@@ -586,7 +586,8 @@ html.wlock{overflow:hidden}
 .legal a{color:var(--ink);word-break:break-word}
 .ckprefs{padding:1.1rem 1.3rem;margin:0 0 1.8rem;border:1px solid #e0cdb0;border-radius:18px;background:rgba(255,255,255,.5)}
 .ckprefs p{margin:0 0 .6rem}
-.privnote{font-size:.85rem;margin:0}\n.privnote.center{text-align:center}\n.privnote a{color:inherit;font-weight:700}\n.cinfo a,.fblock a[href^="mailto"],.fblock a[href^="tel"]{color:inherit;text-decoration:none;border-bottom:1px solid transparent}\n.cinfo a:hover,.fblock a[href^="mailto"]:hover,.fblock a[href^="tel"]:hover{border-bottom-color:currentColor}\n.fco{font-size:.88rem;opacity:.9}\n.legal .note{font-style:italic;color:var(--ink-soft)}
+.privnote{font-size:.85rem;margin:0}\n.privnote.center{text-align:center}\n.privnote a{color:inherit;font-weight:700}\n.cinfo a,.fblock a[href^="mailto"],.fblock a[href^="tel"]{color:inherit;text-decoration:none;border-bottom:1px solid transparent}\n.cinfo a:hover,.fblock a[href^="mailto"]:hover,.fblock a[href^="tel"]:hover{border-bottom-color:currentColor}\n.fco{font-size:.88rem;opacity:.9}\n.cfirm{font-size:.92rem;opacity:.9}
+.legal .note{font-style:italic;color:var(--ink-soft)}
 
 /* cookie-pop-up */
 html.cklock{overflow:hidden}
@@ -1039,7 +1040,8 @@ html.cklock{overflow:hidden}
           <div class="cinfo">
             <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><a href="mailto:sandra@sandravermeiren.be">sandra@sandravermeiren.be</a></span></div>
             <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><span><a href="tel:+32486039185">0032 486 03 91 85</a></span></div>
-            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Hendrik Consciencestraat 9<br>2340 Beerse</span></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Vestiging: Hendrik Consciencestraat 9<br>2340 Beerse</span></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2"/></svg><span>Sandra Vermeiren (eenmanszaak)<br><span class="cfirm">Ondernemingsnummer: 0747.506.744<br>BTW: BE0747.506.744<br>RPR: Antwerpen, afdeling Turnhout</span></span></div>
           </div>
         </div>
         <div class="formcard">
@@ -1335,16 +1337,24 @@ html.cklock{overflow:hidden}
 
   function out(id,msg){var o=document.getElementById(id);o.textContent=msg;o.classList.add('show')}
   var mailRe=/^\S+@\S+\.\S+$/;
-  document.getElementById('newsForm').addEventListener('submit',function(e){
-    e.preventDefault();var m=document.getElementById('nMail').value.trim();
-    if(!mailRe.test(m)){out('newsOut','Vul een geldig e-mailadres in.');return}
-    out('newsOut','Dit is de voorbeeldweergave: er is nog niets verstuurd.');
-  });
-  document.getElementById('cNewsForm').addEventListener('submit',function(e){
-    e.preventDefault();var m=document.getElementById('cnMail').value.trim();
-    if(!mailRe.test(m)){out('cnOut','Vul een geldig e-mailadres in.');return}
-    out('cnOut','Dit is de voorbeeldweergave: er is nog niets verstuurd.');
-  });
+  function nieuws(formId,nameId,mailId,outId){
+    document.getElementById(formId).addEventListener('submit',function(e){
+      e.preventDefault();
+      var f=e.target,m=document.getElementById(mailId).value.trim(),n=document.getElementById(nameId).value.trim();
+      if(!mailRe.test(m)){out(outId,'Vul een geldig e-mailadres in.');return}
+      var btn=f.querySelector('button');btn.disabled=true;out(outId,'Even geduld…');
+      fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({voornaam:n,mail:m,website:''})})
+        .then(function(r){return r.json().catch(function(){return{ok:false}})})
+        .then(function(j){
+          if(j&&j.ok){f.reset();out(outId,'Bedankt'+(n?', '+n:'')+'! Controleer je mailbox: mogelijk moet je je inschrijving nog bevestigen.')}
+          else{out(outId,(j&&j.fout)||'Inschrijven is niet gelukt. Probeer het later opnieuw.')}
+        })
+        .catch(function(){out(outId,'Inschrijven is niet gelukt. Controleer je verbinding en probeer het opnieuw.')})
+        .then(function(){btn.disabled=false});
+    });
+  }
+  nieuws('newsForm','nName','nMail','newsOut');
+  nieuws('cNewsForm','cnName','cnMail','cnOut');
   document.getElementById('contactForm').addEventListener('submit',function(e){
     e.preventDefault();
     var f=e.target,n=document.getElementById('cName').value.trim(),m=document.getElementById('cMail').value.trim(),b=document.getElementById('cMsg').value.trim();
