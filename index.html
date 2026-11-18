@@ -523,6 +523,18 @@ footer{padding:0 clamp(.6rem,1.5vw,1rem) clamp(.6rem,1.5vw,1rem);margin-top:0}
 .arch .io{font-size:inherit;font-style:normal;font-weight:inherit;white-space:nowrap}
 
 /* hoofdfoto's over de volle breedte, met golvende overgang */
+nav ul{gap:clamp(1rem,1.8vw,1.7rem)}
+nav a{font-size:clamp(1rem,1.25vw,1.18rem);letter-spacing:.07em}
+nav .has-sub{position:relative}
+nav .sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);z-index:60;flex-direction:column;gap:0;min-width:13rem;margin:0;padding:.55rem .4rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 26px rgba(70,45,20,.18)}
+nav .sub::before{content:"";position:absolute;left:0;right:0;top:-.6rem;height:.6rem}
+nav .sub li{display:block}
+nav .sub a{text-align:center;font-size:1rem;padding:.55rem .9rem;border-bottom:0;border-radius:10px}
+nav .sub a:hover,nav .sub a:focus-visible{background:rgba(98,68,44,.1)}
+nav .sub a[aria-current="page"]{background:rgba(98,68,44,.14)}
+@media (hover:hover){nav .has-sub:hover>.sub,nav .has-sub:focus-within>.sub{display:flex}}
+@media (max-width:1280px){.top{flex-wrap:wrap;justify-content:center;row-gap:.4rem}nav{width:100%}nav ul{flex-wrap:wrap;justify-content:center;gap:.3rem 1.3rem}}
+@media (max-width:520px){nav a{font-size:.95rem;letter-spacing:.04em}nav ul{gap:.2rem .9rem}}
 .backrow{max-width:1180px;margin:0 auto;padding:clamp(1rem,2.4vw,1.6rem) clamp(1rem,4vw,3rem) 0}
 .back{display:inline-flex;align-items:center;gap:.5rem;font-family:inherit;font-size:1rem;color:var(--brown);text-decoration:none;border:1px solid var(--brown);border-radius:999px;padding:.45rem 1.1rem;background:transparent;transition:background .2s,color .2s}
 .back:hover,.back:focus-visible{background:var(--brown);color:var(--cream,#f3e7d6)}
@@ -563,7 +575,12 @@ html.wlock{overflow:hidden}
     <nav id="menu" aria-label="Hoofdmenu">
       <ul>
         <li><a href="#welkom">Welkom</a></li>
-        <li><a href="#aanbod">Aanbod</a></li>
+        <li class="has-sub"><a href="#aanbod">Aanbod</a>
+          <ul class="sub" aria-label="Aanbod">
+            <li><a href="#praktijk">Praktijk Lithe</a></li>
+            <li><a href="#verbinding">Weversveld</a></li>
+          </ul>
+        </li>
         <li><a href="#gratis">Gratis</a></li>
         <li><a href="#afspraak">Afspraak</a></li>
         <li><a href="#over-mij">Over mij</a></li>
@@ -1086,6 +1103,23 @@ html.wlock{overflow:hidden}
       var id=b.getAttribute('data-werk');
       b.addEventListener('click',function(){werkOpen(id,b)});
     });
+    /* hover (alleen met muis): opent het venster, sluiten kan alleen met het kruisje */
+    var hoverOk=false;try{hoverOk=matchMedia('(hover: hover)').matches}catch(x){}
+    if(hoverOk){
+      var htimer=null;
+      document.addEventListener('mouseover',function(e){
+        var b=e.target.closest&&e.target.closest('.wbtn,[data-go^="werk-"]');
+        if(!b||(wbox&&wbox.classList.contains('open')))return;
+        var from=e.relatedTarget;if(from&&b.contains(from))return;
+        var id=b.getAttribute('data-werk')||b.getAttribute('data-go');
+        clearTimeout(htimer);htimer=setTimeout(function(){werkOpen(id,b)},140);
+      });
+      document.addEventListener('mouseout',function(e){
+        var b=e.target.closest&&e.target.closest('.wbtn,[data-go^="werk-"]');
+        if(!b)return;var to=e.relatedTarget;if(to&&b.contains(to))return;
+        clearTimeout(htimer);
+      });
+    }
     wwrap.querySelector('.wclose').addEventListener('click',werkClose);
     document.addEventListener('keydown',function(e){
       if(!wbox||!wbox.classList.contains('open'))return;
