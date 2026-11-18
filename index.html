@@ -91,12 +91,7 @@ nav a[aria-current="page"]{border-color:var(--brown)}
 .poem.slim.intro{background:var(--block);border:1px solid #d9c3a4;box-shadow:0 10px 26px rgba(70,45,20,.1)}
 .poem.slim.intro p{color:var(--ink)}
 .poem.slim.intro{border:1px solid rgba(98,68,44,.35);border-radius:62% 38% 55% 45% / 52% 58% 42% 48%;padding:clamp(2.6rem,6vw,3.8rem) clamp(2.4rem,8vw,5.5rem);max-width:min(1100px,calc(100% - 1rem))}
-.poem.slim.photo-hero{background:#3b2616 url(img/natuur.jpg) 50% 52%/cover no-repeat;max-width:none;width:100%;margin:0;border-radius:0;min-height:clamp(320px,38vw,560px);padding:1.2rem 1.2rem calc(var(--wv) + 1.6rem);display:flex;align-items:flex-end;justify-content:center}
-.framebox{background:rgba(251,245,233,.92);border:0;border-radius:16px;padding:.4rem 2.2rem;max-width:100%;width:auto;margin:0 auto;box-shadow:0 6px 18px rgba(40,25,12,.3)}
-.framebox .poem-title{color:var(--ink)}
-.poem.slim .framebox .poem-title.q{font-size:clamp(1.2rem,2.7vw,2.1rem);line-height:1.25;margin:0;max-width:none}
-@media (min-width:640px){.poem.slim .framebox .poem-title.q{white-space:nowrap;font-size:clamp(1.1rem,2.6vw,2rem)}}
-.framebox .orn{display:none}
+
 .offer ul{margin:0;padding-left:1.2rem;text-align:left;font-size:1rem;width:100%}
 .offer li{margin-bottom:.45rem}
 .offer p+a.btn{margin-top:auto}
@@ -477,11 +472,6 @@ footer{padding:0 clamp(.6rem,1.5vw,1rem) clamp(.6rem,1.5vw,1rem);margin-top:0}
 .fblock input{padding:.5rem .9rem;font-size:.95rem}
 .fblock .btn{width:100%;box-shadow:none;margin-top:.3rem;padding:.55rem}
 
-/* tweede menubalk (aanbod) */
-.subnav{width:auto;margin:0 clamp(1rem,4vw,3rem);padding:.7rem 0 .9rem;border-top:1px solid #d9c3a4}
-.subnav ul{justify-content:center;flex-wrap:wrap;gap:.3rem 1.8rem}
-.subnav a{font-size:.74rem;letter-spacing:.1em;color:var(--ink-soft)}
-.subnav a[aria-current="page"]{color:var(--ink)}
 
 /* bloem op de aanbodpagina */
 .flower{display:block;width:100%;max-width:520px;height:auto;margin:0 auto}
@@ -540,6 +530,11 @@ footer{padding:0 clamp(.6rem,1.5vw,1rem) clamp(.6rem,1.5vw,1rem);margin-top:0}
 .phero h1{color:#fbf1de;font-size:clamp(2.3rem,6.2vw,4.6rem);text-transform:none;letter-spacing:.01em;line-height:1.05;text-shadow:0 2px 14px rgba(30,18,8,.45)}
 .phero .eyebrow{margin:0 0 .6rem;font-size:clamp(.8rem,1.3vw,.95rem);letter-spacing:.14em;text-transform:uppercase;color:#f3e3c3}
 .phero .sub{margin:1.1rem 0 0;font-style:italic;font-size:clamp(1.15rem,2.6vw,1.7rem);line-height:1.35;color:#fbf1de;text-shadow:0 2px 12px rgba(30,18,8,.45)}
+.phero.plain{min-height:clamp(240px,32vw,480px);padding:0}
+.phero.plain::before{display:none}
+.phero.nowave::after{display:none}
+.welkomtitel{padding-left:clamp(1rem,4vw,3rem);padding-right:clamp(1rem,4vw,3rem)}
+.welkomtitel h1{max-width:22em;margin-left:auto;margin-right:auto}
 .t3top.solo{grid-template-columns:1fr;max-width:700px}
 .trio.duo{grid-template-columns:repeat(2,1fr);max-width:600px}
 @media (max-width:700px){.trio.duo{grid-template-columns:1fr;max-width:300px}}
@@ -572,22 +567,12 @@ html.wlock{overflow:hidden}
       </ul>
     </nav>
   </div>
-  <nav class="subnav" aria-label="Aanbod">
-    <ul>
-      <li><a href="#praktijk">Praktijk Lithe</a></li>
-      <li><a href="#verbinding">Weversveld</a></li>
-    </ul>
-  </nav>
 
   <main>
   <!-- WELKOM -->
   <section class="page" id="welkom" data-page>
-    <div class="poem slim photo-hero">
-      <div class="framebox">
-        <h1 class="poem-title q">Wat doe jij met je wilde, kostbare leven?</h1>
-        <div class="orn"><i></i></div>
-      </div>
-    </div>
+    <div class="ptitle welkomtitel"><h1>Wat doe jij met je wilde, kostbare leven?</h1><div class="orn"><i></i></div></div>
+    <div class="phero plain nowave" role="img" aria-label="Een groep mensen zit in een tuin bij een vijver tijdens een bijeenkomst" style="background-image:url(img/natuur.jpg);background-position:50% 52%"></div>
 
     <div class="band cream wel-b">
       <div class="prose">
@@ -629,11 +614,8 @@ html.wlock{overflow:hidden}
 
   <!-- PRAKTIJK LITHE -->
   <section class="page ptest" id="praktijk" data-page>
-    <div class="phero" style="background-image:url(img/stenen.jpg);background-position:50% 42%">
-      <div class="phero-in">
-        <h1>Praktijk Lithe</h1>
-      </div>
-    </div>
+    <div class="ptitle"><h1>Praktijk Lithe</h1><div class="orn"><i></i></div></div>
+    <div class="phero plain" role="img" aria-label="Kleurrijk beschilderde stenen met woorden zoals hope, kind en dream" style="background-image:url(img/stenen.jpg);background-position:50% 42%"></div>
     <div class="band" style="padding-top:1.5rem;padding-bottom:3rem">
       <div class="split t3top solo">
         <div class="journey">
@@ -797,11 +779,8 @@ html.wlock{overflow:hidden}
 
   <!-- VERBINDING BOUWEN -->
   <section class="page" id="verbinding" data-page>
-    <div class="phero" style="background-image:url(img/spinnenweb.jpg);background-position:50% 42%">
-      <div class="phero-in">
-        <h1>Weversveld</h1>
-      </div>
-    </div>
+    <div class="ptitle"><h1>Weversveld</h1><div class="orn"><i></i></div></div>
+    <div class="phero plain" role="img" aria-label="Een spinnenweb vol dauwdruppels tussen dennentakken" style="background-image:url(img/spinnenweb.jpg);background-position:50% 42%"></div>
     <div class="band" style="padding-top:1.5rem;padding-bottom:2.5rem">
       <div class="prose">
         <p class="dropline">Verbinding is waar de wereld naar snakt en verbinding weven is mijn passie. Mijn kracht ligt in het zichtbaar maken van onderstromen in een groep, zodat we deze kunnen integreren in de gezamenlijke besluitvorming. <em class="hl">Niemand blijft in de kou staan, elke nee wordt geëerd.</em></p>
