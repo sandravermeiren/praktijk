@@ -49,7 +49,7 @@ p{margin:0 0 1rem}
 /* header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem clamp(1rem,4vw,3rem) .6rem;position:relative}
 .brand{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--ink);min-width:0}
-.brand img{width:clamp(120px,14vw,190px);height:auto;flex:none;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(circle,#000 60%,transparent 72%);mask-image:radial-gradient(circle,#000 60%,transparent 72%)}
+.brand img{width:clamp(84px,9vw,112px);height:auto;flex:none;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(circle,#000 60%,transparent 72%);mask-image:radial-gradient(circle,#000 60%,transparent 72%)}
 .brand span{font-family:var(--font-display);font-size:clamp(.95rem,1.6vw,1.2rem);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.95rem;flex-wrap:nowrap;justify-content:flex-end}
 nav a{display:block;white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:700;font-family:var(--font-display);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem 0;border-bottom:2px solid transparent}
@@ -523,8 +523,6 @@ footer{padding:0 clamp(.6rem,1.5vw,1rem) clamp(.6rem,1.5vw,1rem);margin-top:0}
 .arch .io{font-size:inherit;font-style:normal;font-weight:inherit;white-space:nowrap}
 
 /* hoofdfoto's over de volle breedte, met golvende overgang */
-nav ul{gap:clamp(1rem,1.8vw,1.7rem)}
-nav a{font-size:clamp(1rem,1.25vw,1.18rem);letter-spacing:.07em}
 nav .has-sub{position:relative}
 nav .sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);z-index:60;flex-direction:column;gap:0;min-width:13rem;margin:0;padding:.55rem .4rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 26px rgba(70,45,20,.18)}
 nav .sub::before{content:"";position:absolute;left:0;right:0;top:-.6rem;height:.6rem}
@@ -534,7 +532,6 @@ nav .sub a:hover,nav .sub a:focus-visible{background:rgba(98,68,44,.1)}
 nav .sub a[aria-current="page"]{background:rgba(98,68,44,.14)}
 @media (hover:hover){nav .has-sub:hover>.sub,nav .has-sub:focus-within>.sub{display:flex}}
 @media (max-width:940px){.top{flex-wrap:wrap;justify-content:center;row-gap:.4rem}nav{width:100%}nav ul{flex-wrap:wrap;justify-content:center;gap:.3rem 1.3rem}}
-@media (max-width:520px){nav a{font-size:.95rem;letter-spacing:.04em}nav ul{gap:.2rem .9rem}}
 footer{padding:0}
 .fblock{border-radius:0;padding:2.4rem clamp(1rem,4vw,3rem) 2.6rem}
 .backrow{max-width:1180px;margin:0 auto;padding:clamp(1rem,2.4vw,1.6rem) clamp(1rem,4vw,3rem) 0}
@@ -570,7 +567,7 @@ html.wlock{overflow:hidden}
 
 .subnav{width:auto;margin:0 clamp(1rem,4vw,3rem);padding:.6rem 0 .8rem;border-top:1px solid #d9c3a4}
 .subnav ul{display:flex;justify-content:center;flex-wrap:wrap;gap:.3rem clamp(1.4rem,4vw,2.6rem);list-style:none;margin:0;padding:0}
-.subnav a{font-size:clamp(.95rem,1.15vw,1.08rem);letter-spacing:.08em;color:var(--ink-soft)}
+.subnav a{color:var(--ink-soft)}
 .subnav a[aria-current="page"]{color:var(--ink)}
 #groei .offer p,#groei .offer .mod{text-align:left;align-self:stretch}
 #groei .offer .wpts{gap:.45rem}
