@@ -893,7 +893,7 @@ html.cklock{overflow:hidden}
       fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({voornaam:n,mail:m,website:''})})
         .then(function(r){return r.json().catch(function(){return{ok:false}})})
         .then(function(j){
-          if(j&&j.ok){f.reset();out(outId,'Bedankt'+(n?', '+n:'')+'! Controleer je mailbox: mogelijk moet je je inschrijving nog bevestigen.')}
+          if(j&&j.ok){f.reset();out(outId,'Dankjewel voor je aanmelding! Je mag binnenkort interessant nieuws verwachten.')}
           else{out(outId,(j&&j.fout)||'Inschrijven is niet gelukt. Probeer het later opnieuw.')}
         })
         .catch(function(){out(outId,'Inschrijven is niet gelukt. Controleer je verbinding en probeer het opnieuw.')})
