@@ -10,4 +10,4 @@ Statische website: `index.html` plus de map `img` met de afbeeldingen, en twee s
 ## Zoekmachines
 
 De site is vindbaar: elke pagina heeft een eigen adres, titel, beschrijving en canonical (zie `seo.py` in de bouwmap), plus `sitemap.xml`, `robots.txt` en `llms.txt`.
-Het domein staat ingesteld op `https://www.sandravermeiren.be`.
+Het domein staat ingesteld op `https://sandravermeiren.be`.

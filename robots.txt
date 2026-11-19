@@ -58,4 +58,4 @@ User-agent: Googlebot
 Allow: /
 Disallow: /api/
 
-Sitemap: https://www.sandravermeiren.be/sitemap.xml
+Sitemap: https://sandravermeiren.be/sitemap.xml
