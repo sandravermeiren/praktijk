@@ -7,7 +7,7 @@ Statische website: `index.html` plus de map `img` met de afbeeldingen, en twee s
 - Het contactformulier verstuurt mail via SMTP. Stel in Vercel (Settings, Environment Variables) deze variabelen in: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` en `CONTACT_TO`.
 - De nieuwsbriefformulieren schrijven in bij Kit. Stel in Vercel in: `KIT_API_KEY` (v4 API key uit Kit, Settings, Developer) en `KIT_FORM_ID` (het nummer van het Kit-formulier, zichtbaar in de URL van het formulier).
 
-## Let op: nog niet vindbaar in Google
+## Zoekmachines
 
-Tijdens de voorlopige fase vraagt `vercel.json` zoekmachines om de site te negeren (kop `X-Robots-Tag: noindex, nofollow`).
-**Verwijder dat blok uit `vercel.json` zodra het eigen domein live gaat**, anders blijft de site onvindbaar in Google.
+De site is vindbaar: elke pagina heeft een eigen adres, titel, beschrijving en canonical (zie `seo.py` in de bouwmap), plus `sitemap.xml`, `robots.txt` en `llms.txt`.
+Het domein staat ingesteld op `https://www.sandravermeiren.be`.
